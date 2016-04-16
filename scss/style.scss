@@ -1,0 +1,60 @@
+@import 'reset';
+@import 'variables';
+
+$track-height:      50px;
+$track-flat-width:  700px;
+$track-edge-width:  $track-height;
+$track-full-width:  $track-flat-width + ($track-edge-width * 2);
+
+h1, h2, h3, h4, h5, h6, p, input, textarea, select {
+  font-family: sans-serif;
+}
+
+body {
+  background: $beige;
+}
+
+.track {
+  position: relative;
+  height: 100px;
+
+  .track-surface, .track-ground {
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .track-surface {
+    width: $track-flat-width;
+    height: $track-height;
+    background: $lgreen;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -$track-edge-width;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 $track-edge-width+1 $track-edge-width;
+      border-color: transparent transparent $lgreen transparent;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -$track-edge-width;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: $track-edge-width+1 0 0 $track-edge-width;
+      border-color: transparent transparent transparent $lgreen ;
+    }
+  }
+  .track-ground {
+    height: 8px;
+    width: $track-full-width;
+    border-radius: 0 0 1px 1px;
+    background: $brown;
+  }
+}
