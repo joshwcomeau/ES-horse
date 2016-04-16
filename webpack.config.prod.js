@@ -19,7 +19,8 @@ module.exports = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin('styles.css')
   ],
 
   module: {
@@ -34,7 +35,7 @@ module.exports = {
       // SASS
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        loader: ExtractTextPlugin.extract('style-loader', 'css!sass')
       }
 
     ]
